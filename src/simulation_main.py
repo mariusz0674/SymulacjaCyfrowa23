@@ -1,4 +1,4 @@
-import src.SimulationEngine
+#import src.SimulationEngine
 
 print("Symulacja taka sytuacja")
 print("Symulacja taka sytuacja")

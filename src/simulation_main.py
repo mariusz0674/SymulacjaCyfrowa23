@@ -1,4 +1,4 @@
-#import src.SimulationEngine
+import numpy
 
 print("Symulacja taka sytuacja")
 print("Symulacja taka sytuacja")

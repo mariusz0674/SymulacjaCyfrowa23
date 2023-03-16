@@ -1,0 +1,2 @@
+# SymulacjaCyfrowa23
+Mgr

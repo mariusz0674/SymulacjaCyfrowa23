@@ -1,7 +1,9 @@
 import numpy
+from EnviromentalVariables import EnviromentalVariables
+from EnvironmentalConstants import EnviromentalConstants
+from SimulationEngine import SimulationEngine
+from UsersList import UsersList
 
-print("Symulacja taka sytuacja")
-print("Symulacja taka sytuacja")
-print("Symulacja taka sytuacja")
-print("Syaaaaaaaaaaaaaaaaacja")
-print("Symulacja taka sytuacja")
+
+activeUsersList = UsersList
+enviromentalVariables = EnviromentalVariables(0)

@@ -1,2 +1,14 @@
+import User
+from EnviromentalVariables import EnviromentalVariables
 class SimulationEngine:
-    var = "hejj"
+    def __init__(self,
+                 enviromentalVariables: EnviromentalVariables,
+                 ):
+        self.enviromentalVariables = enviromentalVariables
+
+    
+    def createUser(self):
+        self.enviromentalVariables.usersCounter+=1
+        return User(self.enviromentalVariables.usersCounter,
+                    1,
+                    )

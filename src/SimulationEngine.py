@@ -1,18 +1,17 @@
-from src.EnviromentalVariables import EnviromentalVariables
+from src import MyRandomGenerator
+from src.EnvironmentVariables import EnvironmentVariables
 from src.User import User
+from src.event.AddUser import AddUser
 
 
 class SimulationEngine:
-    enviromentalVariables = None
+   # environmentVariables = EnvironmentVariables.getInstance()
+    #
+    environmentVariables = EnvironmentVariables.getInstance()
 
     @staticmethod
-    def init(env_vars: EnviromentalVariables):
-        SimulationEngine.enviromentalVariables = env_vars
+    def createAddUserEvent():
+            AddUser(
+                SimulationEngine.environmentVariables.globalTime + MyRandomGenerator.RandomNumberGenerator.get_random_number())
 
-    @staticmethod
-    def createUser():
-        SimulationEngine.enviromentalVariables.usersCounter += 1
-        return User(
-            SimulationEngine.enviromentalVariables.usersCounter,
-            1,
-        )
+

@@ -1,26 +1,19 @@
-import numpy
-from EnviromentalVariables import EnviromentalVariables
-from EnvironmentalConstants import EnviromentalConstants
-from SimulationEngine import SimulationEngine
-from UsersList import UsersList
-from src.EventList import EventList
-from src.MyRandomGenerator import RandomNumberGenerator
-from src.event.CreateUser import CreateUser
+from src.EnvironmentVariables import EnvironmentVariables
+from src.SimulationEngine import SimulationEngine
+from src.event.Event import Event
 
-activeUsersList = UsersList
-eventList = EventList
-enviromentalVariables = EnviromentalVariables(0)
+class main:
+    environmentVariables = EnvironmentVariables.getInstance()
+    Event.eventList = environmentVariables.eventList
+    print(environmentVariables.inServiceUserList.userCount)
 
-globalTime = 0
+    for i in range(1, 10):
+        SimulationEngine.createAddUserEvent()
 
 
-while():
-    SimulationEngine.createUser()
+    while not environmentVariables.eventList.isEnd():
+        event: Event = environmentVariables.eventList.getNext()
+        environmentVariables.globalTime = event.timeOfTheEvent
+        event.serve()
 
-
-for i in range(1,10):
-    print(RandomNumberGenerator.get_random_number())
-
-
-def createUser():
-    eventList.append(CreateUser())
+        print(str(event))

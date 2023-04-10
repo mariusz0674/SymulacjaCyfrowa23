@@ -1,14 +1,18 @@
-import User
-from EnviromentalVariables import EnviromentalVariables
-class SimulationEngine:
-    def __init__(self,
-                 enviromentalVariables: EnviromentalVariables,
-                 ):
-        self.enviromentalVariables = enviromentalVariables
+from src.EnviromentalVariables import EnviromentalVariables
+from src.User import User
 
-    
-    def createUser(self):
-        self.enviromentalVariables.usersCounter+=1
-        return User(self.enviromentalVariables.usersCounter,
-                    1,
-                    )
+
+class SimulationEngine:
+    enviromentalVariables = None
+
+    @staticmethod
+    def init(env_vars: EnviromentalVariables):
+        SimulationEngine.enviromentalVariables = env_vars
+
+    @staticmethod
+    def createUser():
+        SimulationEngine.enviromentalVariables.usersCounter += 1
+        return User(
+            SimulationEngine.enviromentalVariables.usersCounter,
+            1,
+        )

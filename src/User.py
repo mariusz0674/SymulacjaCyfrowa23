@@ -5,6 +5,7 @@ from src.EnvironmentalConstants import EnvironmentalConstants
 from src.EnvironmentVariables import EnvironmentVariables
 
 
+
 class User:
     def __init__(self,
                  userID,
@@ -21,12 +22,12 @@ class User:
 
     def processSwitchContition(self, powBs1, powBs2):
         if self.basestationID == "BS1":
-            if powBs2 >= powBs1 +3:
+            if powBs2 >= powBs1:
                 self.positiveRaportsToSwitchCounter+=1
             else:
                 self.positiveRaportsToSwitchCounter=0
         else:
-            if powBs2 <= powBs1 +3:
+            if powBs2 <= powBs1:
                 self.positiveRaportsToSwitchCounter+=1
             else:
                 self.positiveRaportsToSwitchCounter=0
@@ -38,6 +39,8 @@ class User:
             self.basestationID = "BS2"
         else:
             self.basestationID = "BS1"
+
+        print("base changed to: " + self.basestationID)
 
     def raport(self):
         self.updatePosition()

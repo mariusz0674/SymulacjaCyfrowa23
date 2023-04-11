@@ -13,11 +13,9 @@ class RaportUser(Event):
         if self.user.checkIsEndRoute():
             self.user.goDie()
         else:
-
             RaportUser(
                 self.environmentVariables.globalTime + EnvironmentalConstants.USER_RAPORT_PERIOD,
                 self.user
-
             )
 
 

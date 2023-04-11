@@ -7,7 +7,7 @@ class main:
     Event.eventList = environmentVariables.eventList
     print(environmentVariables.inServiceUserList.userCount)
 
-    for i in range(1, 10):
+    for i in range(1, 2):
         SimulationEngine.createAddUserEvent()
 
 

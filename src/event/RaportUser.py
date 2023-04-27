@@ -18,6 +18,7 @@ class RaportUser(Event):
         )
         print("User from que")
 
+
     def serve(self):
         self.user.raport()
         if self.user.checkIsEndRoute():

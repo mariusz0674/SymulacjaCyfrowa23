@@ -1,6 +1,6 @@
-from src.EventList import EventList
-from src.InQueForServiceUserList import InQueForServiceUserList
-from src.InServiceUserList import InServiceUserList
+from src.lists.EventList import EventList
+from src.lists.InQueForServiceUserList import InQueForServiceUserList
+from src.lists.InServiceUserList import InServiceUserList
 
 
 class EnvironmentVariables:
@@ -14,6 +14,7 @@ class EnvironmentVariables:
             cls.__instance.inServiceUserList = InServiceUserList()
             cls.__instance.inQueForServiceUserList = InQueForServiceUserList()
             cls.__instance.globalTime = 0
+            cls.__instance.powerTrsholdToSwitch = 3
         return cls.__instance
 
     def __init__(self):

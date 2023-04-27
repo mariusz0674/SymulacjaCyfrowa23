@@ -1,7 +1,5 @@
 from collections import deque
 
-from src.EnvironmentalConstants import EnvironmentalConstants
-
 
 class InQueForServiceUserList(deque):
     def __init__(self):

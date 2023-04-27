@@ -1,6 +1,6 @@
 from collections import deque
 
-from src.EnvironmentalConstants import EnvironmentalConstants
+from src.environment.EnvironmentalConstants import EnvironmentalConstants
 
 
 class InServiceUserList(deque):

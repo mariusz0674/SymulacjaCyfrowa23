@@ -1,12 +1,13 @@
 import math
 
 from src import MyRandomGenerator
-from src.EnvironmentalConstants import EnvironmentalConstants
-from src.EnvironmentVariables import EnvironmentVariables
-
+from src.environment.EnvironmentVariables import EnvironmentVariables
+from src.environment.EnvironmentalConstants import EnvironmentalConstants
 
 
 class User:
+    environmentVariables:EnvironmentVariables = EnvironmentVariables.getInstance()
+
     def __init__(self,
                  userID,
                  basestationID="BS1"):
@@ -22,12 +23,12 @@ class User:
 
     def processSwitchContition(self, powBs1, powBs2):
         if self.basestationID == "BS1":
-            if powBs2 >= powBs1:
+            if powBs2 >= powBs1 + self.environmentVariables.powerTrsholdToSwitch:
                 self.positiveRaportsToSwitchCounter+=1
             else:
                 self.positiveRaportsToSwitchCounter=0
         else:
-            if powBs2 <= powBs1:
+            if self.environmentVariables.powerTrsholdToSwitch + powBs2 <= powBs1:
                 self.positiveRaportsToSwitchCounter+=1
             else:
                 self.positiveRaportsToSwitchCounter=0
@@ -50,9 +51,6 @@ class User:
             self.switchBase()
 
 
-
-
-
     def checkIsEndRoute(self):
         if self.position >= EnvironmentalConstants.DISTANCE_BEETWEN_STATIONS - EnvironmentalConstants.RESP_DIE:
             return True
@@ -64,7 +62,8 @@ class User:
         self.position += self.speed * EnvironmentalConstants.USER_RAPORT_PERIOD / 1000
 
     def calcPower(self, distance):
-        return 4.56 - 22 * math.log10(distance)
+        temp = MyRandomGenerator.RandomNumberGenerator.getRandomNormal()
+        return 4.56 - 22 * float(math.log10(distance))
 
     def calcReceivedPowers(self):
         powBs1 = self.calcPower(self.position)
@@ -72,6 +71,9 @@ class User:
         return powBs1, powBs2
 
     def goDie(self):
+        self.environmentVariables.usersCounter-=1
+        self.environmentVariables.inServiceUserList.remove(self)
+        print("user deleted")
         pass
     def __str__(self) -> str:
         return str(self.userID) + " : " + str(self.basestationID)

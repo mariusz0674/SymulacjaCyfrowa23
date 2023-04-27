@@ -11,3 +11,9 @@ class RandomNumberGenerator:
     @staticmethod
     def getRandomUserCreateTime():
         return RandomNumberGenerator._rng.randint(1, 1000)
+
+
+    @staticmethod
+    def getRandomNormal() -> float:
+        return random.Random().gauss(0, 4)
+

@@ -1,6 +1,5 @@
 from src import MyRandomGenerator
-from src.EnvironmentVariables import EnvironmentVariables
-from src.User import User
+from src.environment.EnvironmentVariables import EnvironmentVariables
 from src.event.AddUser import AddUser
 
 

@@ -1,9 +1,9 @@
-from src.EnvironmentVariables import EnvironmentVariables
+from src.environment.EnvironmentVariables import EnvironmentVariables
 
 
 class Event:
     eventList = None
-    environmentVariables = EnvironmentVariables.getInstance()
+    environmentVariables: EnvironmentVariables = EnvironmentVariables.getInstance()
 
     def __init__(self,
                  timeOfTheEvent,

@@ -1,5 +1,5 @@
-from src.EnvironmentVariables import EnvironmentVariables
-from src.EnvironmentalConstants import EnvironmentalConstants
+from src import MyRandomGenerator
+from src.environment.EnvironmentalConstants import EnvironmentalConstants
 from src.User import User
 from src.event.Event import Event
 from src.event.RaportUser import RaportUser
@@ -19,8 +19,17 @@ class AddUser(Event):
                 self.environmentVariables.globalTime + EnvironmentalConstants.USER_RAPORT_PERIOD,
                 self.user
             )
+            print("usser to in service")
         else:
             self.environmentVariables.inQueForServiceUserList.append(self.user)
+           # print("usser not to in service")
+
+        AddUser(
+            self.environmentVariables.globalTime + MyRandomGenerator.RandomNumberGenerator.get_random_number()
+        + self.environmentVariables.globalTime)
+
+
+
 
     def __str__(self) -> str:
         return self.__class__.__name__ \

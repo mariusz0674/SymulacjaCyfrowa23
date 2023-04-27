@@ -7,7 +7,6 @@ class RaportUser(Event):
         super().__init__(timeOfTheEvent, user)
         self.eventList.append(self)
 
-
     def killUser(self):
         self.environmentVariables.usersCounter=-1
         self.environmentVariables.inServiceUserList.remove(self.user)

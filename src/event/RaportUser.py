@@ -11,7 +11,6 @@ class RaportUser(Event):
     def killUser(self):
         self.environmentVariables.usersCounter=-1
         self.environmentVariables.inServiceUserList.remove(self.user)
-
     def pushUserToServe(self):
         self.environmentVariables.inServiceUserList.append(self.user)
         RaportUser(

@@ -8,7 +8,7 @@ class RaportUser(Event):
         self.eventList.append(self)
 
     def killUser(self):
-        self.environmentVariables.usersCounter=-1
+        self.environmentVariables.usersCounter-=1
         self.environmentVariables.inServiceUserList.remove(self.user)
     def pushUserToServe(self):
         self.environmentVariables.inServiceUserList.append(self.user)

@@ -14,3 +14,7 @@ class InServiceUserList(deque):
         super().append(user)
         self.userCount += 1
 
+    def remove(self, user):
+        self.userCount -= 1
+        super().remove(user)
+

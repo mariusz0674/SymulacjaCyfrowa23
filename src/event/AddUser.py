@@ -11,7 +11,9 @@ class AddUser(Event):
         self.eventList.append(self)
 
     def serve(self):
-        userCount = self.environmentVariables.usersCounter=+1
+        self.environmentVariables.usersCounter += 1
+        userCount = self.environmentVariables.usersCounter
+
         self.user = User(userCount)
         if self.environmentVariables.inServiceUserList.userCount < EnvironmentalConstants.MAX_USSERS_IN_SYSTEM:
             self.environmentVariables.inServiceUserList.append(self.user)
@@ -19,14 +21,19 @@ class AddUser(Event):
                 self.environmentVariables.globalTime + EnvironmentalConstants.USER_RAPORT_PERIOD,
                 self.user
             )
-            print("usser to in service")
+            self.environmentVariables.statisticEngine.addActiveUsersInTime(
+                self.environmentVariables.globalTime,
+                self.environmentVariables.inServiceUserList.userCount)
+            #print("Add usser to in service")
         else:
             self.environmentVariables.inQueForServiceUserList.append(self.user)
-           # print("usser not to in service")
+            self.environmentVariables.statisticEngine.addInQueForServiceUsersInTime(
+                self.environmentVariables.globalTime,
+                self.environmentVariables.inQueForServiceUserList.userCount)
 
         AddUser(
-            self.environmentVariables.globalTime + MyRandomGenerator.RandomNumberGenerator.get_random_number()
-        + self.environmentVariables.globalTime)
+            self.environmentVariables.globalTime + MyRandomGenerator.RandomNumberGenerator.getRandomUserCreateTime()
+        )
 
 
 

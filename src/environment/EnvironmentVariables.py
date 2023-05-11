@@ -1,7 +1,7 @@
 from src.lists.EventList import EventList
 from src.lists.InQueForServiceUserList import InQueForServiceUserList
 from src.lists.InServiceUserList import InServiceUserList
-
+from src.StatisticEngine import StatisticEngine
 
 class EnvironmentVariables:
     __instance = None
@@ -14,7 +14,9 @@ class EnvironmentVariables:
             cls.__instance.inServiceUserList = InServiceUserList()
             cls.__instance.inQueForServiceUserList = InQueForServiceUserList()
             cls.__instance.globalTime = 0
-            cls.__instance.powerTrsholdToSwitch = 3
+            cls.__instance.powerTrsholdToSwitch = 1
+            cls.__instance.usersservedCounter = 0
+            cls.__instance.statisticEngine = StatisticEngine()
         return cls.__instance
 
     def __init__(self):

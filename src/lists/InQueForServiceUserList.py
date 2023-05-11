@@ -10,3 +10,8 @@ class InQueForServiceUserList(deque):
         super().append(user)
         self.userCount += 1
 
+    def pop(self):
+        self.userCount -= 1
+        return super().pop()
+    def isEmpty(self):
+        return self.userCount == 0

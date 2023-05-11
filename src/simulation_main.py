@@ -16,6 +16,15 @@ class main:
     while not environmentVariables.eventList.isEnd():
         event: Event = environmentVariables.eventList.getNext()
         environmentVariables.globalTime = event.timeOfTheEvent
-        event.serve()
 
+
+
+        event.serve()
+        if environmentVariables.usersservedCounter == 2000:
+            break
         #print(str(event))
+
+    environmentVariables.statisticEngine.printSwitchBasesByUsersHist()
+    environmentVariables.statisticEngine.printInQueForServiceUsersInTime()
+    environmentVariables.statisticEngine.printActiveUsersInTime()
+    environmentVariables.statisticEngine.showPlots()

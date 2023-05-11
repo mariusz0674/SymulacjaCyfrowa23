@@ -11,6 +11,6 @@ class SimulationEngine:
     @staticmethod
     def createAddUserEvent():
             AddUser(
-                SimulationEngine.environmentVariables.globalTime + MyRandomGenerator.RandomNumberGenerator.get_random_number())
+                SimulationEngine.environmentVariables.globalTime + MyRandomGenerator.RandomNumberGenerator.getRandomUserCreateTime())
 
 
